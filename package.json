@@ -1,0 +1,29 @@
+{
+  "name": "resume_generator",
+  "version": "1.0.0",
+  "description": "A lightweight cv template engine",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenny7/resume_generator.git"
+  },
+  "keywords": [
+    "cv",
+    "resume",
+    "builder"
+  ],
+  "author": "Tennyson Onovwiona and Abimbola Ebun Abiona",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tenny7/resume_generator/issues"
+  },
+  "homepage": "https://github.com/tenny7/resume_generator#readme"
+}
