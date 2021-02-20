@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "node index.js",
-    "build": "echo 'build script excecuted'",
+    "build": "echo 'build script executed'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
