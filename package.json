@@ -2,13 +2,13 @@
   "name": "resume_generator",
   "version": "1.0.0",
   "description": "A lightweight cv template engine",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.17.1"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "build": "echo 'build script executed'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
