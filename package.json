@@ -4,7 +4,9 @@
   "description": "A lightweight cv template engine",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "bootstrap": "^4.6.0",
+    "express": "^4.17.1",
+    "pug": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
