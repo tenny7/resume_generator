@@ -4,8 +4,7 @@
   "description": "A lightweight cv template engine",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1",
-    "jade": "^1.11.0"
+    "express": "^4.17.1"
   },
   "devDependencies": {},
   "scripts": {
