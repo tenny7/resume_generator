@@ -7,9 +7,7 @@ app.get('/', (req,res) => {
 })
 
 var options = {
-
     index: 'index.html'
-    
     };
 
 app.use('/', express.static('/home/site/wwwroot', options));
