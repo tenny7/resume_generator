@@ -21,4 +21,6 @@ steps:
     npm run build
   displayName: 'npm install and init'
   
-  
+- task: Bash@3
+  inputs:
+    filePath: '**/*.sh'
