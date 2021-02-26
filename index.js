@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
+const router = express.Router()
 const port = process.env.PORT || 3000
 
 
 app.get('/', (req,res) => {
-    res.send('index')
+    res.sendFile(__dirname+'/index.html')
 })
 
 var options = {
