@@ -1,16 +1,17 @@
 const express = require('express')
 const app = express()
+const port = process.env.PORT || 3000
 
 app.get('/', (req,res) => {
-    res.send('The beginning of Resume genrator!')
+    res.render('index')
 })
 
-// var options = {
+var options = {
 
-//     index: 'index.js'
+    index: 'index.html'
     
-//     };
+    };
 
-// app.use('/', express.static('/home/site/wwwroot', options));
+app.use('/', express.static('/home/site/wwwroot', options));
 
-app.listen(process.env.PORT || 3000)
+app.listen(port, () => console.log('Server is running on localhost:'+port))
