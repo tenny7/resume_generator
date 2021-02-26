@@ -14,6 +14,10 @@ app.get('/', (req,res) => {
     res.render('index')
 })
 
+app.get('/layout', (req,res) => {
+    res.render('layout')
+})
+
 app.use('/', router)
 
 app.listen(port, () => console.log('Server is running on the localhost:'+port))
