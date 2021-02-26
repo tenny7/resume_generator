@@ -16,4 +16,4 @@ app.get('/', (req,res) => {
 
 app.use('/', router)
 
-app.listen(port, () => console.log('Server is running on localhost:'+port))
+app.listen(port, () => console.log('Server is running on the localhost:'+port))
