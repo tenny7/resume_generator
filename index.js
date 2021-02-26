@@ -7,7 +7,7 @@ app.get('/', (req,res) => {
 
 var options = {
 
-    index: 'index.html'
+    index: 'index.js'
     
     };
 
