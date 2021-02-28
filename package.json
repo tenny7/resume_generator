@@ -9,6 +9,8 @@
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.18",
     "morgan": "^1.10.0",
     "pug": "^3.0.0"
   },
