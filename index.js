@@ -1,28 +1,30 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 const express = require('express')
+const mongoose = require('mongoose')
+app.use(express.static('public'))
 const path = require("path");
-const web = require('./routes/web')
+var cors = require('cors')
 const app = express()
-const base_path = path.join(__dirname, 'views/')
+app.use(cors())
 
-const router = express.Router()
 const port = process.env.PORT || 3000
 
-app.set('View engine', 'html')
-app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
-app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
-app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist/js')))
-app.use(express.static('public'))
+const things = require('./routes/things')
 
-app.set("views", path.join(__dirname, "views"));
+
+// connect Database
+mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true})
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+db.once('open', () => console.log('Connected to Mongoose!'))
+
 
 app.get('/', (req,res) => {
-    res.sendFile(base_path +'index.html')
+    res.send('root access')
 })
 
-app.get('/layout', (req,res) => {
-    res.sendFile(base_path +'layout.html')
-})
+app.use('/things', things)
 
-app.use('/', router)
-
-app.listen(port, () => console.log('Server is running on the localhost:'+port))
+app.listen(port, () => console.log('Server is running on the localhost:'+ port))
