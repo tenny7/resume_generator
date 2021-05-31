@@ -9,6 +9,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+    AzureSubcriptionName: Azure Pass - Sponsorship (aad91282-bf0a-4e52-9f35-85d52bf3278f)
+    WebAppName: my-web-dev-app
+    ResourceGroupName: AzureDevOps-Rg
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -19,6 +24,30 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+
+
+
+- task: AzureAppServiceSettings@1
+  inputs:
+    azureSubscription: $(AzureSubcriptionName)
+    appName: $(WebAppName)
+    resourceGroupName: $(ResourceGroupName)
+    appSettings: |
+      [
+          {
+          "name": "WEBSITE_NODE_DEFAULT_VERSION",
+          "value": "10.15",
+          "slotSetting": false
+          }
+      ]
+    generalSettings: |
+      [
+          {
+          "alwaysOn": true,
+          "webSocketsEnabled": false
+          }
+      ]
   
 - task: CopyFiles@2
   inputs:
