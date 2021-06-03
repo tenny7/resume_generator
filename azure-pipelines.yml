@@ -31,7 +31,13 @@ steps:
 - script: |
     npm install
     npm run build
+    mpn test
   displayName: 'npm install and build'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
 
 
 
