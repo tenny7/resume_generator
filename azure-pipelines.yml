@@ -31,7 +31,7 @@ steps:
 - script: |
     npm install
     npm run build
-    mpn test
+    npm test
   displayName: 'npm install and build'
 
 - task: PublishTestResults@2
