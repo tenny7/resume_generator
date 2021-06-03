@@ -13,7 +13,7 @@ variables:
     AzureSubcriptionName: Azure Pass - Sponsorship (aad91282-bf0a-4e52-9f35-85d52bf3278f)
     WebAppName: my-web-dev-app
     ResourceGroupName: AzureDevOps-Rg
-    NPM_PACKAGE: $(System.DefaultWorkingDirectory)/package-lock.json
+    NPM_PACKAGE: $(System.DefaultWorkingDirectory)/
 
 
 steps:
