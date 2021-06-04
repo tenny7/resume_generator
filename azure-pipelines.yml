@@ -19,7 +19,7 @@ variables:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '14.x'
   displayName: 'Install Node.js'
   
 - task: Cache@2
@@ -42,7 +42,7 @@ steps:
       [
           {
           "name": "WEBSITE_NODE_DEFAULT_VERSION",
-          "value": "10.14",
+          "value": "14.17",
           "slotSetting": false
           }
       ]
