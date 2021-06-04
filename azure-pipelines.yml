@@ -13,7 +13,7 @@ variables:
     AzureSubcriptionName: Azure Pass - Sponsorship (aad91282-bf0a-4e52-9f35-85d52bf3278f)
     WebAppName: my-web-dev-app
     ResourceGroupName: AzureDevOps-Rg
-    NPM_PACKAGE: $(System.DefaultWorkingDirectory)/
+    # NPM_PACKAGE: $(System.DefaultWorkingDirectory)/
 
 
 steps:
@@ -22,11 +22,11 @@ steps:
     versionSpec: '14.x'
   displayName: 'Install Node.js'
   
-- task: Cache@2
-  inputs:
-    key: 'npm | "$(Agent.OS)" | **/package-lock.json'
-    path: $(NPM_PACKAGE)
-    cacheHitVar: 'CacheCheck'
+# - task: Cache@2
+#   inputs:
+#     key: 'npm | "$(Agent.OS)" | **/package-lock.json'
+#     path: $(NPM_PACKAGE)
+#     cacheHitVar: 'CacheCheck'
 
 - script: |
     npm install
