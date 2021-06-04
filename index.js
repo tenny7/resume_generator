@@ -22,11 +22,7 @@ db.once('open', () => console.log('Connected to Mongoose!'))
 
 
 app.get('/', (req,res) => {
-    res.send('Tell me more about access')
-})
-
-app.get('/double',(req,res)=>{
-    res.send('double word')
+    res.send('Special root access')
 })
 
 app.use('/things', things)
