@@ -3,10 +3,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const express = require('express')
 const mongoose = require('mongoose')
-app.use(express.static('public'))
 const path = require("path");
 var cors = require('cors')
 const app = express()
+app.use(express.static('public'))
 app.use(cors())
 
 const port = process.env.PORT || 3000
@@ -22,7 +22,7 @@ db.once('open', () => console.log('Connected to Mongoose!'))
 
 
 app.get('/', (req,res) => {
-    res.send('root access')
+    res.send('Special root access')
 })
 
 app.use('/things', things)
