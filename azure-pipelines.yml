@@ -33,12 +33,6 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-
-
-
-
-
-
 - task: AzureAppServiceSettings@1
   inputs:
     azureSubscription: $(AzureSubcriptionName)
