@@ -48,7 +48,7 @@ steps:
       [
           {
           "name": "WEBSITE_NODE_DEFAULT_VERSION",
-          "value": "10.15",
+          "value": "10.14",
           "slotSetting": false
           }
       ]
