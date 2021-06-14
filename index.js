@@ -36,7 +36,7 @@ let db = new sqlite3.Database('./database/employee.db', (err) => {
     if (err){
         displayError(err)
     }else{
-        log("connected")
+        log("connected to sqlite3")
     }
 })
 
@@ -48,14 +48,12 @@ app.get('/', (req,res) => {
 app.get('/things', things)
 
 app.post('/software', (req,res) => {
-    db.serialize(() => {
-        
+    db.serialize(() => { 
         db.run(`INSERT INTO users(name) VALUES(?)`, req.body.name, (err) => {
             if(err){
                 displayError(err)
             }else{
                 res.json({names: req.body.name})
-                // res.render('index', {names: req.body.name})
                 log(`data inserted ${req.body.name}`)
             }
         })
