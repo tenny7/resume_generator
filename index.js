@@ -5,10 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 //import statements
 const express = require('express')
-const bodyParser = require('body-parser');
-const cors = require('cors')
-const sqlite3 = require('sqlite3').verbose()
-
+// const mongoose = require('mongoose')
 const path = require("path");
 const things = require('./routes/things');
 
@@ -20,46 +17,18 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors())
 
-// shorten log to console 
-log = console.log
-displayError = console.error
+const port = process.env.PORT || 3000
+const router = express.Router()
+bookRoutes = require('./routes/bookRoutes')
 
-let db = new sqlite3.Database('./database/employee.db', (err) => {
-    if (err){
-        displayError(err)
-    }else{
-        log("connected to sqlite3")
-    }
-})
-
-//api calls
-app.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname, './index.html'))
-})
-
-app.get('/things', things)
-
-app.post('/software', (req,res) => {
-    db.serialize(() => { 
-        db.run(`INSERT INTO users(name) VALUES(?)`, req.body.name, (err) => {
-            if(err){
-                displayError(err)
-            }else{
-                res.json({names: req.body.name})
-                log(`data inserted ${req.body.name}`)
-            }
-        })
-    })
-    db.close()
-})
-
-app.listen(port, () => console.log('Server is running on the localhost:'+ port))
-
-
-// const mongoose = require('mongoose')
-// const { default: axios } = require('axios');
 // connect Database
 // mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true})
 // const db = mongoose.connection
-// db.on('error', error => displayError(error))
-// db.once('open', () => log('Connected to Mongoose!'))
+// db.on('error', error => console.error(error))
+// db.once('open', () => console.log('Connected to Mongoose!'))
+
+app.get('/', (req,res) => {
+    res.json({ data: 'Special root access'})
+})
+app.use('/books', bookRoutes)
+app.listen(port, () => console.log('Server is running on the localhost:'+ port))
