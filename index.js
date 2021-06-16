@@ -21,8 +21,16 @@ const port = process.env.PORT || 3000
 const router = express.Router()
 bookRoutes = require('./routes/bookRoutes')
 
+await mongoose.connect(process.env.DATABASE_URL,{
+    useNewUrlParser: true,
+    useCreateIndex:true,
+    useFindAndModify:false,
+    useUnifiedTopology:true
+})
+
 app.get('/', (req,res) => {
     res.json({ data: 'Special root access'})
 })
+
 app.use('/books', bookRoutes)
 app.listen(port, () => console.log('Server is running on the localhost:'+ port))
