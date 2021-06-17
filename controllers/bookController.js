@@ -2,7 +2,7 @@ const express = require('express')
 ,router = express.Router()
 ,Book =  require('../models/books')
 ,Author = require('../models/author')
-.mongoose = require('mongoose')
+,mongoose = require('mongoose')
 
 // book_index, book_details, book_create_get, book_post, book_delete
 const book_index = (req,res) => {
@@ -11,11 +11,13 @@ const book_index = (req,res) => {
         title       : req.body.title,
         description : req.body.description
     })
-    re.save().then((result) => {
+    book.save().then((result) => {
         res.json(result)
     })
-    .catch(())
-    req.json({data:'books from database'})
+    .catch((err) => {
+        req.json(err)
+    })
+    
 }
 
 const book_post = (req,res) => {

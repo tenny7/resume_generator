@@ -30,7 +30,7 @@ const bookSchema = new Schema({
     }   
 })
 
-module.exports = mongoose.Model('Book', bookSchema)
+module.exports = mongoose.model('Book', bookSchema)
 
 
 // const db = mongoose.connection
