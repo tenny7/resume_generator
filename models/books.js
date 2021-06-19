@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 // const ObjectId = Schema.ObjectId;
 
+// _id: mongoose.Types.ObjectId,
 const bookSchema = new Schema({
-    _id: mongoose.Types.ObjectId,
     title: { 
         type   : String, required: false
     },
