@@ -1,2 +1,2 @@
-# resume_generator
-A light-weight resume generator
+# BookLibrary
+A light-weight book library
