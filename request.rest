@@ -1,0 +1,7 @@
+POST http://localhost:3000/book/create
+Content-Type: 'application/json'
+
+{
+    title: 'Lord of the rings'
+    description: 'Epic book'
+}

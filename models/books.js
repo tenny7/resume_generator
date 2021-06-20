@@ -11,14 +11,17 @@ const bookSchema = new Schema({
     description: { 
         type: String, required: false
     },
-    publshDate: { 
-        type:Date, required:false
+    publshedDate: { 
+        type: String, required:false
     },
-    pageCount: { 
+    pages: { 
         type: Number, required: false
     },
-    coverImageName: { 
+    bookcover: { 
         type: String, required:false
+    },
+    item : {
+        type: String, required:true
     },
     createdAt: {
         type: Date, required:false, default: Date.now
