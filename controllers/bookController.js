@@ -52,12 +52,6 @@ const uploadCover = async (req,res) => {
 const bookIndex = async (req,res) => {
     book = await Book.find({})
     res.render('books', {data: book})
-    // for (let book = await cursor.next(); book != null; book = await cursor.next()) {
-    //     res.render('books', {data: book})
-    //   }
-    // for await (const book of Book.find()) {
-    //     res.render('books', {data: book})
-    // }
 }
 
 const RenderUploadPage = (req, res) => {
