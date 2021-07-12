@@ -1,25 +1,13 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+// const express = require('express')
+// const bodyParser = require('body-parser')
 const Book =  require('../models/books')
-const Author = require('../models/author')
-const { ObjectId } = require('mongodb')
+// const Author = require('../models/author')
+// const { ObjectId } = require('mongodb')
 
 
 
-// book_index, book_details, book_create_get, book_post, book_delete
-const bookCreate = async (req,res) => {
-  
-    // if(req.files){
-    //     const files = req.files
-    //     let index, len;
 
-    //     console.log(req.files)
-    //     res.json(req.files)
-    //     for (index = 0, len = files.length; index < len; ++index) {
-    //         result += files[index].path
-    //     }
-    // }
-    
+const bookCreate = async (req,res) => { 
     let book = await new Book({
         title           : req.body.title,
         description     : req.body.description,
@@ -38,8 +26,6 @@ const bookCreate = async (req,res) => {
 
 const uploadCover = async (req,res) => {
     const id = req.params.id
-    
-    // const book =  await Book.find({_id: id})
     try {
         await Book.update({ _id:id },{ 'bookcover' : req.body.bookcover })
         res.redirect('books',{success: 'successful'})
@@ -65,6 +51,3 @@ module.exports = {
     RenderUploadPage,
     uploadCover
 }
-
-
-// bookcover   : req.files[0].path,

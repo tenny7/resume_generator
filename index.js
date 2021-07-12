@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
 const hbs = require('hbs')
+const jwt = require('jsonwebtoken')
 const port = process.env.PORT || 3000
 
 
@@ -25,6 +26,7 @@ app.use(cors())
 const bookRoutes = require('./routes/BookRoutes')
 const indexRoutes = require('./routes/IndexRoutes')
 const contactRoutes = require('./routes/ContactRoutes')
+const AuthRoutes = require('./routes/AuthRoutes')
 
 mongoose.connect(process.env.DATABASE_URL,{
     useNewUrlParser: true,
@@ -36,6 +38,7 @@ mongoose.connection
 .on('error', error => console.log(error))
 
 app.use('/', indexRoutes)
+app.use(AuthRoutes)
 app.use(bookRoutes)
 app.use(contactRoutes)
 app.listen(port, () => console.log('Server is running on the localhost:'+ port))
