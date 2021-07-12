@@ -4,6 +4,10 @@ exports.RenderLoginForm = (req, res) => {
     res.render('login')
 }
 
+exports.RenderLoginForm = (req, res) => {
+    res.render('register')
+}
+
 exports.UserCreate = async (req, res) => {
     user = await User.create({
         username: req.body.username,
