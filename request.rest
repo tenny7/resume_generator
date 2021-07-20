@@ -1,7 +1,7 @@
-POST http://localhost:3000/book/create
-Content-Type: 'application/json'
+POST http://localhost:3000/register
+content-type: application/json
 
 {
-    title: 'Lord of the rings'
-    description: 'Epic book'
+    "username": "tenny",
+    "password": "tenny@1234"
 }

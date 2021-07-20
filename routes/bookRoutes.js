@@ -1,24 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const BookController = require('../controllers/BookController')
+const verifyToken = require('../helpers/verify')
 
-const multer = require('multer')
 
-const storage = multer.diskStorage({
-    destination: (req,file,cb) => {
-        cb(null,'public/images')
-    },
-    filename: (req,file,cb) => {
-        cb(null, file.originalname)
-    }
-})
-const upload = multer({storage: storage, limits: {fileSize: 1024 * 1024 * 5} })
-const singleupload = upload.single('item')
-const singleupload2 = upload.single('bookcover')
+router.post('/book/create',verifyToken, BookController.bookCreate)
+router.get('/book/:id',verifyToken, BookController.getBookWithId);
+router.put('/book/:id',verifyToken, BookController.updateBookWithId);           
+router.delete('/book/delete/:id', verifyToken, BookController.deleteBook);
 
 router.get('/books', BookController.bookIndex)
-router.post('/book/create', singleupload, BookController.bookCreate)
-router.get('/book/upload', BookController.RenderUploadPage)
-router.post('/book/cover/upload/:id', singleupload2, BookController.uploadCover)
+
 
 module.exports = router

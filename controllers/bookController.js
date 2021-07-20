@@ -1,53 +1,79 @@
-// const express = require('express')
-// const bodyParser = require('body-parser')
+const express = require('express')
+const bodyParser = require('body-parser')
 const Book =  require('../models/books')
-// const Author = require('../models/author')
-// const { ObjectId } = require('mongodb')
+const jwt = require('jsonwebtoken')
 
 
+const bookIndex = async (req,res) => {
+    books = await Book.find({})
+    res.json(books)
+}
 
+const bookCreate = (req,res) => { 
+        let book = new Book({
+            title           : req.body.title,
+            publishedDate   : req.body.publishDate,
+            pages           : req.body.pages
+        })
+        book.save()
+        .then(()=> {
+            res.json({
+                "success" : "Book created"
+            })
+        }).catch((err) => {
+            res.json({error: err })
+        });     
+}
 
-const bookCreate = async (req,res) => { 
-    let book = await new Book({
-        title           : req.body.title,
-        description     : req.body.description,
-        publishedDate   : req.body.publishDate,
-        pages           : req.body.pages,
-        item            : req.file.path
-    })
-    book.save()
-    .then(()=> {
-        res.render('upload',{ id:book._id, successful:'successful' })
-    }).catch((err) => {
-        res.json({error: err })
-    })
+const getBookWithId = async (req, res) => {
+    book = await Book.findById(req.params.id)
+    if (book) {
+        res.json({
+            'data': book
+        })
+    }else {
+        res.json({
+            'message': 'failed to find book'
+        })
+    }
+}
+
+const updateBookWithId = (req,res) => {
+
+    bookUpdate = Book.findByIdAndUpdate(req.params.id, {
+            title : req.body.title,
+            pages : req.body.pages  
+    }).then((success) => {
+        res.json({
+            "message" : "Updated"
+        })
+    }).catch((error) => {
+        res.json({
+            "message":"Failed"
+        })
+    });
     
 }
 
-const uploadCover = async (req,res) => {
-    const id = req.params.id
-    try {
-        await Book.update({ _id:id },{ 'bookcover' : req.body.bookcover })
-        res.redirect('books',{success: 'successful'})
-    } catch (error){
-        res.json({error: 'failed to upload cover ' + error})
-    }
-
+const deleteBook = (req,res) => {
+    book = Book.deleteOne({_id:req.params.id})
+    .then(() => {
+        res.json({
+            'success' : 'book deleted'
+        })
+    })
+    .catch((error) => {
+        res.json({
+            'message' : error
+        })
+    })
 }
-
-const bookIndex = async (req,res) => {
-    book = await Book.find({})
-    res.render('books', {data: book})
-}
-
-const RenderUploadPage = (req, res) => {
-    res.render('upload')
-}
-
 
 module.exports = {
     bookIndex,
     bookCreate,
-    RenderUploadPage,
-    uploadCover
+    getBookWithId,
+    deleteBook,
+    updateBookWithId
 }
+
