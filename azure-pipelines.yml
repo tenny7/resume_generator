@@ -1,4 +1,5 @@
 # Node.js
+
 # Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -33,26 +34,12 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-# - task: AzureAppServiceSettings@1
+# - task: AzureKeyVault@2
 #   inputs:
-#     azureSubscription: $(AzureSubcriptionName)
-#     appName: $(WebAppName)
-#     resourceGroupName: $(ResourceGroupName)
-#     appSettings: |
-#       [
-#           {
-#           "name": "WEBSITE_NODE_DEFAULT_VERSION",
-#           "value": "14.17",
-#           "slotSetting": false
-#           }
-#       ]
-#     generalSettings: |
-#       [
-#           {
-#           "alwaysOn": false,
-#           "webSocketsEnabled": false
-#           }
-#       ]
+#     azureSubscription: 'Visual Studio Enterprise Subscription(795e5dad-6e94-41f8-af43-4321cd00cc8b)'
+#     KeyVaultName: 'mykvaults'
+#     SecretsFilter: '*kv2'
+#     RunAsPreJob: true
   
 - task: CopyFiles@2
   inputs:
